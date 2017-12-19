@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" type="text/css" href="css/order.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<div class="hard_tou">
+			<a href="index.html"><img src="img/left.png" alt="" /></a>
+			<span>岸上租车</span>
+		</div>
+		<form action="">
+			<div class="all">
+				<div class="hard">
+					<div class="hard_all">
+						<div class="last_name">
+							<span class="last_name_span">预<span class="jiange">定</span><span class="jiange">人</span></span>
+							<input type="text" name="" class="btn_name" value="" placeholder="请输入你的姓名" />
+						</div>
+						<div class="tel">
+							<span class="tel_span">联系电话</span>
+							<input type="text" name="" class="btn_tel" value="" placeholder="请输入你的联系电话" />
+						</div>
+					</div>
+
+					<!--循环-->
+					<div class="time">
+						<div class="data">
+							<div class="father">
+								<div class="time_left">
+									<div style="float: left;">
+										<div class="img"><img class="time_img" src="img/time.png" alt="" /></div>
+										<span class="last_name_span"><span class="jiange_one">请选择租车时间</span></span>
+									</div>
+								</div>
+								<div class="time_right">
+									<input type="date" name="" class="btn_da" value="" /><img src="img/right.png" />
+								</div>
+							</div>
+							<div class="place">
+								<div class="place_left">北京到上海</div>
+								<div class="place_right">
+									<p class="place_p">
+										<span>7座</span>
+										<span style="margin-left: 0.16rem;">奥迪<span class="red"></span></span>
+										<span class="red red_left">￥3400</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="time">
+						<div class="data">
+							<div class="father">
+								<div class="time_left">
+									<div style="float: left;">
+										<div class="img"><img class="time_img" src="img/time.png" alt="" /></div>
+										<span class="last_name_span"><span class="jiange_one">请选择租车时间</span></span>
+									</div>
+								</div>
+								<div class="time_right">
+									<input type="date" name="" class="btn_da" value="" /><img src="img/right.png" />
+								</div>
+							</div>
+							<div class="place">
+								<div class="place_left">北京到上海</div>
+								<div class="place_right">
+									<p class="place_p">
+										<span>7座</span>
+										<span style="margin-left: 0.16rem;">奥迪<span class="red"></span></span>
+										<span class="red red_left">￥3400</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="time">
+						<div class="data">
+							<div class="father">
+								<div class="time_left">
+									<div style="float: left;">
+										<div class="img"><img class="time_img" src="img/time.png" alt="" /></div>
+										<span class="last_name_span"><span class="jiange_one">请选择租车时间</span></span>
+									</div>
+								</div>
+								<div class="time_right">
+									<input type="date" name="" class="btn_da" value="" /><img src="img/right.png" />
+								</div>
+							</div>
+							<div class="place">
+								<div class="place_left">北京到上海</div>
+								<div class="place_right">
+									<p class="place_p">
+										<span>7座</span>
+										<span style="margin-left: 0.16rem;">奥迪<span class="red"></span></span>
+										<span class="red red_left">￥3400</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					
+					
+
+
+
+
+					<div class="foot">
+						<div class="foot_left"><span class="foot_z">￥<span>9999</span></span>
+						</div>
+						<div class="foot_right">立即支付</div>
+					</div>
+
+				</div>
+			</div>
+		</form>
+		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function() {
+				var flag = false;
+
+				$(".foot_right").css({
+					background: "grey"
+				});
+	
+				$(".btn_name").on("input", function() {
+					check();
+				})
+
+				$(".btn_tel").on("input", function() {
+					check();
+				})
+
+				$(".btn_da").on("input", function() {
+                    if (new Date($(this).val()) <= new Date()) {
+                        c = false;
+                        alert("不能选择今天及之前的日期")
+                    }
+					check();
+					
+				})
+				
+				function check() {
+					var a = $(".btn_name").val();
+					var b = $(".btn_tel").val();
+					var c = true;
+					$(".btn_da").each(function(i, v) {
+						var d = $(v).val();
+						console.log(d);
+						if (!d || new Date(d) <= new Date()){
+                            c = false;
+						}
+//						if(!d) {
+//							c = false;
+//						}
+					})				
+					if(a && b && c) {
+						$(".foot_right").css({
+							background: ""
+						});
+						flag = true;
+					} else {
+						$(".foot_right").css({
+							background: "grey"
+						});
+						flag = false;
+					}
+				}
+				//点击按钮  立即支付 
+				$(".foot_right").on("click", function() {
+					if(!flag) {
+						return false;
+					}
+					
+					alert("ajax")
+				})
+			})
+		</script>
+	</body>
+
+</html>
